@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Comment Form</title>
+    <style>
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .form-container:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #ff7e5f;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        label {
+            font-size: 1em;
+            margin-bottom: 8px;
+            display: block;
+            color: #555;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: 1px solid #ff7e5f;
+            font-size: 1em;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            background-color: #ffe0cc;
+            outline: none;
+        }
+
+        button {
+            background-color: #ff7e5f;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #feb47b;
+        }
+
+        .message {
+            font-size: 1.1em;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .message.success {
+            color: #28a745;
+        }
+
+        .message.error {
+            color: #dc3545;
+        }
+
+        
+        @media (max-width: 500px) {
+            .form-container {
+                width: 90%;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            input, textarea {
+                padding: 8px;
+            }
+
+            button {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Leave your Feedback</h2>
+        <form id="commentForm">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your name" />
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email" />
+
+            <label for="comment">Your Comment:</label>
+            <textarea id="comment" name="comment" rows="4" required placeholder="Write your thoughts here..."></textarea>
+
+            <button type="submit">Submit Comment</button>
+        </form>
+        <p class="message" id="message"></p>
+    </div>
+
+    <script>
+        document.getElementById("commentForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let comment = document.getElementById("comment").value.trim();
+            let message = document.getElementById("message");
+
+            
+            if (!/^[A-Za-z\s]{3,30}$/.test(name)) {
+                message.classList.add("error");
+                message.textContent = "Name must be between 3-30 characters and contain only letters.";
+                return;
+            }
+
+            
+            if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+                message.classList.add("error");
+                message.textContent = "Please enter a valid email address.";
+                return;
+            }
+
+            
+            if (comment.length < 5 || comment.length > 200) {
+                message.classList.add("error");
+                message.textContent = "Comment must be between 5 and 200 characters.";
+                return;
+            }
+
+            
+            message.classList.remove("error");
+            message.classList.add("success");
+            message.textContent = "Your comment has been submitted successfully!";
+        });
+    
+
+</body>
+</html>
