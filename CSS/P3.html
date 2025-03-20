@@ -3,87 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cozy Brews - Menu</title>
-    <link rel="stylesheet" href="styles.css">  
-    
+    <title>Creative Comment Form</title>
     <style>
-       
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f3e5d8;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
             margin: 0;
             padding: 0;
-            text-align: center;
-        }
-        .menu-container {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
-            padding: 20px;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
         }
-        .menu-item {
-            width: 250px;
-            padding: 15px;
-            background-color: #d2b48c;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .form-container:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #ff7e5f;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        label {
+            font-size: 1em;
+            margin-bottom: 8px;
+            display: block;
+            color: #555;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
             border-radius: 10px;
+            border: 1px solid #ff7e5f;
+            font-size: 1em;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s ease;
         }
-        .menu-item h3 {
-            color: #4b382a;
+
+        input:focus, textarea:focus {
+            background-color: #ffe0cc;
+            outline: none;
         }
-        .price {
-            font-weight: bold;
-            color: #8b5a2b;
+
+        button {
+            background-color: #ff7e5f;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #feb47b;
+        }
+
+        @media (max-width: 500px) {
+            .form-container {
+                width: 90%;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            input, textarea {
+                padding: 8px;
+            }
+
+            button {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
-<body background="./cafe_bg.jpg">
-    <hr><br><br>
-    <h1 style="color: #4b382a; font-size: 36px;"> Cozy Brews</h1><br><br>
-    <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"> Welcome to Cozy Brews, your ultimate coffee retreat! </h2>
-    <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"> Enjoy handcrafted beverages made from the finest coffee beans and delightful pastries. </h2><br><br>
+<body>
 
-    <div class="menu-container">
-        <div class="menu-item">
-            <h3> Espresso</h3>
-            <p>Rich and bold single-shot espresso with a smooth crema.</p>
-            <p class="price">₹100</p>
-        </div>
-        
-        <div class="menu-item">
-            <h3> Latte</h3>
-            <p>Silky steamed milk blended with a shot of espresso.</p>
-            <p class="price">₹150</p>
-        </div>
-        
-        <div class="menu-item">
-            <h3> Cappuccino</h3>
-            <p>Perfectly balanced espresso, steamed milk, and frothy foam.</p>
-            <p class="price">₹160</p>
-        </div>
-        
-        <div class="menu-item">
-            <h3> Mocha</h3>
-            <p>Espresso meets chocolate and steamed milk, topped with whipped cream.</p>
-            <p class="price">₹180</p>
-        </div>
-        
-        <div class="menu-item">
-            <h3> Matcha Latte</h3>
-            <p>Japanese matcha green tea mixed with creamy steamed milk.</p>
-            <p class="price">₹220</p>
-        </div>
+    <div class="form-container">
+        <h2>Leave your Feedback</h2>
+        <form action="#" method="POST">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your name" />
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email" />
+
+            <label for="comment">Your Comment:</label>
+            <textarea id="comment" name="comment" rows="4" required placeholder="Write your thoughts here..."></textarea>
+
+            <button type="submit">Submit Comment</button>
+        </form>
     </div>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
